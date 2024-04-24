@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Profile</h2>
+        <p>{{ user }}</p>
+{#        <a href="{% url 'signup' %}"><li><i class="fa-solid fa-circle-info" style="color: #ff1f1f;"></i> sign up </li></a>#}
+{#        <a href="{% url 'login' %}"><li><i class="fa-solid fa-circle-info" style="color: #ff1f1f;"></i> login </li></a>#}
+        <a href="{% url 'logout' %}"><li><i class="fa-solid fa-circle-info" style="color: #ff1f1f;"></i> logout </li></a>
+    </div>
+{% endblock %}

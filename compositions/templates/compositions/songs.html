@@ -1,0 +1,37 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Catalog{% endblock %}
+
+{% block content %}
+    <div class="cardsDiv">
+        <div class="cardsList" >
+            {% for elem in compositions %}
+                <div class="card">
+                    <div class="likes_div">
+                        <div class="likes">
+                           <button class="like-btn" data-song-id="{{ elem.id }}">❤️</button>
+                           <span class="like-count" id="like-count-{{ elem.id }}">{{ elem.likes_users.count }}</span>
+                        </div>
+                    </div>
+                    <h3>{{ elem.title }}</h3>
+                    <div class="imagesDiv">
+                        {% if elem.image %}
+                            <a href="{% url 'artist_detail' elem.id %}"><img class="cardImage" src="{{ elem.image.url }}" alt=""></a>
+                            <div class="audio-player">
+                                <audio controls>
+                                    <source src="{{ elem.audio.url }}" type="audio/mp3">
+                                </audio>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+    </div>
+{% endblock %}
+
+
+
+
+

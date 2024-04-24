@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Artist Detail: {{ artist.title }}{% endblock %}
+
+{% block content %}
+    <div class="artist">
+        <h1>{{ artist.title }}</h1>
+        <img src="{{ artist.image.url }}" alt="{{ artist.title }}">
+        <audio controls>
+            <source src="{{ artist.audio.url }}" type="audio/mp3">
+        </audio>
+        <h1>Artist ID {{ artist.id }}</h1>
+        <form action="" class="comment-form" method="post" data-song-id="{{ artist.id }}">
+            {% csrf_token %}
+            <div class="comments">
+                <label>
+                    <input class="comment_input" type="text" name="comment">
+                </label>
+                <input class="comment_submit" type="submit">
+            </div>
+        </form>
+        <div class="comment-list">
+            <h4>coments list</h4>
+            {% for comment in artist.comment_set.all %}
+                <p>{{ comment.user }} - {{ comment.text }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{#                        <div class="comments">#}
+{#                            <h4>Comments:</h4>#}
+{#                            <input type="text" name="song_id" value="{{ song.id }}">#}
+{#                            <button type="submit">Submit Comment</button>#}
+{#                            {% for comment in elem..all %}#}
+{#                                <p>{{ comment.text }} - {{ comment.user.username }}</p>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
