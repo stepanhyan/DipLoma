@@ -4,7 +4,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.db import transaction  # Import the transaction module
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
@@ -49,32 +49,6 @@ def like_song(request):
         return JsonResponse({'status': 'error', 'message': 'Invalid form data', 'errors': form.errors})
 
 
-# @require_POST
-# def post_comment(request):
-#     song_id = request.POST.get('song_id')
-#     comment_text = request.POST.get('comment')
-#     print('song id', song_id)
-#     print('comment text', comment_text)
-#
-#     if song_id and comment_text:
-#         song = Songs.objects.get(id=song_id)
-#         comment = Comment.objects.create(user=request.user, song=song, text=comment_text)
-#
-#         # Return additional information in the response
-#         response_data = {
-#             'status': 'success',
-#             'comments': song.comment_set.count(),  # Use correct related name
-#             'comment': {
-#                 'user': comment.user.username,
-#                 'text': comment.text,
-#             },
-#         }
-#         return JsonResponse(response_data)
-#     else:
-#         response_data = {'status': 'error', 'message': 'Invalid form data'}
-#         return JsonResponse(response_data)
-
-
 @require_POST
 def post_comment(request):
     user_profile = UserProfile.objects.get(user=request.user)
@@ -95,7 +69,7 @@ def post_comment(request):
                 'status': 'success',
                 'comments': song.comment_set.count(),
                 'comment': {
-                    'user': comment.user.username,
+                    'user': request.user.username,
                     'text': comment.text,
                 },
             }
@@ -145,35 +119,34 @@ def profile(request):
 
 
 def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return redirect('home')  # или любой другой URL после успешного входа
-    else:
-        form = AuthenticationForm()
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = AuthenticationForm(request, request.POST)
+            if form.is_valid():
+                login(request, form.get_user())
+                return redirect('home')  # или любой другой URL после успешного входа
+        else:
+            form = AuthenticationForm()
 
-    return render(request, 'registration/login.html', {'form': form})
+        return render(request, 'registration/login.html', {'form': form})
+    else:
+        return render(request, 'registration/profile.html')
 
 
 def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            user_profile = UserProfile.objects.create(user=user)
-            # Добавьте другие поля профиля при необходимости
-            return redirect('login')  # Имя вашего пути для входа
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                user_profile = UserProfile.objects.create(user=user)
+                # Добавьте другие поля профиля при необходимости
+                return redirect('login')  # Имя вашего пути для входа
+        else:
+            form = SignUpForm()
+        return render(request, 'registration/signup.html', {'form': form})
     else:
-        form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
-
-
-@login_required
-def user_logout(request):
-    logout(request)
-    messages.success(request, 'Logout successful!')
-    return redirect('home')
+        return render(request, 'registration/profile.html')
 
 
 @login_required
@@ -191,7 +164,7 @@ def change_password(request):
 
 
 # Create your views here.
-def index(request):
+def home_view(request):
     data = {
         'title': 'Future Payments Systems',
         'values': ['Future', 'Payments', 'Systems']

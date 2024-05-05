@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body {
   background: #2c2c2c;
+  height: 100vh;
 }
 
 audio {
@@ -12,6 +13,7 @@ audio {
 .nav_container {
   display: inline-block;
   cursor: pointer;
+  /*background-color: red;*/
 }
 
 .bar1, .bar2, .bar3 {
@@ -211,3 +213,66 @@ form {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+
+
+.signup_form span,
+.signup_form ul{
+  display: none;
+}
+
+.signup_form p{
+  display: flex;
+  flex-direction: column;
+}
+
+.signup_form input[type="text"],
+.signup_form input[type="password"]{
+  width: 100%;
+  padding: 10px;
+  /*margin: 5px 0 20px; !* Add some margin below each input *!*/
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+.signup_form button[type="submit"]{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 40%;
+}
+
+.login_form input[type="text"],
+.login_form input[type="password"]{
+  width: 100%;
+  padding: 10px;
+  /*margin: 5px 0 20px; !* Add some margin below each input *!*/
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.login_form button[type="submit"]{
+  width: 55%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.artist{
+  margin-top: 2%;
+  width: 90%;
+  border: 1px solid gray;
+  border-radius: 2mm;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.comment-list{
+  margin-top: 2%;
+  width: 80%;
+  background-color: rgba(172, 172, 172, 0.12);
+  border: 1px solid snow;
+  border-radius: 2mm;
+  padding: 2%;
+}

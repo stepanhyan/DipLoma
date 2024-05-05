@@ -5,14 +5,14 @@ from django import forms
 
 class LikeForm(forms.Form):
     song_id = forms.IntegerField()
-    print("SongID", song_id)
+    # print("SongID", song_id)
 
 
 class CommentForm(forms.Form):
     song_id = forms.IntegerField()
     comment = forms.CharField(widget=forms.TextInput(attrs={'class': 'comment_input'}))
-    print("SongID from forms", song_id)
-    print("Comment from Forms", comment)
+    # print("SongID from forms", song_id)
+    # print("Comment from Forms", comment)
 
 
 class SongsForm(ModelForm):
@@ -28,10 +28,10 @@ class SongsForm(ModelForm):
         widgets = {
             "title": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': "Product's name"
+                'placeholder': "Artist's name"
             }),
             "image": FileInput(attrs={
-                'class': 'form-control'
+                'class': 'form-control',
             }),
             "audio": FileInput(attrs={
                 'class': 'form-control',
