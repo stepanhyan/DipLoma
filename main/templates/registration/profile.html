@@ -4,9 +4,9 @@
 
 {% block content %}
     <div class="container">
-        <h2>Profile</h2>
-        <p>{{ user }}</p>
-        <form action="{% url 'logout' %}" method="post">
+        <form class="user_profile" action="{% url 'logout' %}" method="post">
+            <h2>Profile</h2>
+            <p class="exactly_user">User: {{ user }}</p>
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Logout</button>
         </form>

@@ -4,16 +4,15 @@
 
 {% block content %}
     <div class="features">
-{#        <h1>{{ title }}</h1>#}
-{#        <h1>{{ title }}</h1>#}
-        <h1>Home</h1>
-        <p>Music Library</p>
-        <a href="{% url 'songs_home' %}" class="btn btn-danger">See Compositions</a>
-
-{#        {% for elem in values %}#}
-{#            <p>{{ elem }}</p>#}
-{#        {% endfor %}#}
-
+        <h1>Welcome to Audiophoria!</h1>
+        <p>Open the doors to a universe of music. Audiophoria is more than just a website—it's your gateway to explore melodies and rhythms across genres.<br/>  From timeless classics to cutting-edge tracks, our library enriches your musical journey.</p>
+        <ul>
+            <li>Discover new musical genres, artists, and albums.</li>
+            <li>Create and share playlists with friends.</li>
+            <li>Stay updated with the latest tracks and music news.</li>
+        </ul>
+        <p>Designed for ease and enjoyment, Audiophoria ensures that every visitor finds something to love.<br/> Join us and let music fill your life!</p>
+        <a href="{% url 'songs_home' %}" class="btn btn-danger">Explore Compositions</a>
     </div>
 
 {% endblock %}

@@ -22,7 +22,6 @@ class Songs(models.Model):
                                 options={'quality': 100})
     audio = models.FileField(upload_to='audio/', default='')
     likes_users = models.ManyToManyField(UserProfile, related_name='liked_songs', default=0)
-    # comments_users = models.ManyToManyField(UserProfile, related_name='commented_songs', default='')
 
     def __str__(self):
         return self.title

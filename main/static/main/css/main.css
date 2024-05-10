@@ -4,12 +4,6 @@ body {
   height: 100vh;
 }
 
-audio {
-  width: 101%;
-  height: 20px;
-  filter: sepia(80%) saturate(70%) grayscale(100) contrast(99%) invert(83%);
-}
-
 .nav_container {
   display: inline-block;
   cursor: pointer;
@@ -71,9 +65,7 @@ audio {
   transition: 2.5s;
 }
 
-/*@media screen and (max-width: 830px) {*/
-/*    */
-/*}*/
+
 .navbar img {
   width: 180px;
   height: 70px;
@@ -110,17 +102,19 @@ main {
   justify-content: center;
   align-items: center;
   padding-left: 15%;
-  /*text-align: center;*/
 }
 
-.features {
-  padding-top: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+main .features h1 {
+  font-size: 50px;
 }
+
+main .features p {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+
+
 
 .cardsDiv {
   color: #fff;
@@ -133,12 +127,10 @@ main {
 .cardsList {
   display: flex;
   flex-wrap: wrap;
-  /*border: 2px solid snow;*/
   gap: 4%;
   align-items: center;
   justify-content: center;
   width: 80vw;
-  /*text-align: center;*/
 }
 
 .card {
@@ -152,20 +144,16 @@ main {
   align-items: center;
   border-radius: 3mm;
   border: 2px solid dimgray;
-  /*gap:50px;*/
   background-color: #2c2c2c;
   box-shadow: 0px 0px 5px darkgray;
 }
 
 .imagesDiv {
-  /*border: 1px solid snow;*/
   border-radius: 2mm;
   box-shadow: 0px 0px 5px #5d5d5d inset;
   width: 285px;
   height: 303px;
   padding: 10px;
-  /*display: inline-block;*/
-  /*margin: 0 auto*/
 }
 
 .cardImage {
@@ -174,18 +162,13 @@ main {
   height: auto;
   object-fit: cover;
   margin-bottom: 2.2%;
-  /*display: inline-block;*/
-  /*margin: 0 auto;*/
+}
+audio {
+  width: 101%;
+  height: 20px;
+  filter: sepia(80%) saturate(70%) grayscale(100) contrast(99%) invert(83%);
 }
 
-main .features h1 {
-  font-size: 50px;
-}
-
-main .features p {
-  max-width: 400px;
-  margin: 20px auto;
-}
 
 .createCardForm {
   border: 1px solid dimgray;
@@ -211,10 +194,27 @@ form {
   color: white;
   border: 1px solid red;
 }
+.exactly_user{
+  font-family: "Arial Narrow", sans-serif;
+  font-size: 25px;
+}
+.user_profile{
+  margin: 10% 0% 0% 20%;
+  width: 50%;
+  border: 1px solid snow;
+  border-radius: 2mm;
+  padding: 2%;
+  background-color: #535353; /* Light background for the text area */
+}
 
-/*# sourceMappingURL=main.css.map */
-
-
+.signup_form{
+  margin-top: 10%;
+  width: 30%;
+  border: 1px solid snow;
+  border-radius: 2mm;
+  padding: 2%;
+  background-color: #535353; /* Light background for the text area */
+}
 
 .signup_form span,
 .signup_form ul{
@@ -239,7 +239,16 @@ form {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 40%;
+  width: 48%;
+}
+
+.login_form{
+  margin-top: 15%;
+  width: 30%;
+  border: 1px solid snow;
+  border-radius: 2mm;
+  padding: 2%;
+  background-color: #535353; /* Light background for the text area */
 }
 
 .login_form input[type="text"],
@@ -251,7 +260,7 @@ form {
   border-radius: 5px;
 }
 .login_form button[type="submit"]{
-  width: 55%;
+  width: 65%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -259,7 +268,7 @@ form {
 
 .artist{
   margin-top: 2%;
-  width: 90%;
+  width: 50%;
   border: 1px solid gray;
   border-radius: 2mm;
   padding: 2%;
@@ -268,11 +277,67 @@ form {
   justify-content: center;
   align-items: center;
 }
+.artist input{
+  margin-top: 3%;
+}
 .comment-list{
   margin-top: 2%;
-  width: 80%;
+  width: 70%;
   background-color: rgba(172, 172, 172, 0.12);
   border: 1px solid snow;
   border-radius: 2mm;
   padding: 2%;
+}
+
+.features {
+    margin-top: 2%;
+    width: 60%; /* Limit the width of the text container */
+    padding: 20px;
+    background-color: #535353; /* Light background for the text area */
+    color: snow;
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid snow;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    font-family: 'Arial', sans-serif; /* Modern, readable font */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.features h1 {
+    color: snow; /* Dark color for headings */
+    margin-bottom: 16px;
+}
+
+.features p {
+    color: snow; /* Lighter color for paragraph text */
+    font-size: 16px;
+    line-height: 1.6; /* Spacing between lines */
+    margin-bottom: 16px;
+}
+
+.features ul {
+    margin: 20px 0;
+    padding-left: 20px; /* Space for bullet points */
+    text-align: left;
+}
+
+.features li {
+    margin-bottom: 10px;
+    color: snow; /* Slightly darker color for list items */
+}
+
+.features a.btn {
+    background-color: #d9534f; /* Bootstrap 'btn-danger' color */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    font-weight: bold;
+}
+
+.features a.btn:hover {
+    background-color: #c9302c; /* Darker shade on hover */
 }

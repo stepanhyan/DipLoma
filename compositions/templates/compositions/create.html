@@ -5,16 +5,14 @@
 {% block content %}
 
     <div class="createCardForm">
-        <h1>Add product form</h1>
+        <h1>Add your own composition</h1>
         <form  class="music_create" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-{#            {{ form.as_p }}#}
             {{ form.title }}
             <label for="image">Image</label>
             {{ form.image }}
             <label for="audio">Audio</label>
             {{ form.audio }}<br>
-
             <span>{{ error }}</span>
             <div class="btns">
                 <button class="btn btn-success" type="submit">Add product</button>

@@ -22,7 +22,6 @@ LOGIN_REDIRECT_URL = 'home'
 
 INSTALLED_APPS = [
     'channels',
-    # 'channels_socketio',
     'imagekit',
     'compositions',
     'main',

@@ -163,7 +163,6 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {'form': form})
 
 
-# Create your views here.
 def home_view(request):
     data = {
         'title': 'Future Payments Systems',
